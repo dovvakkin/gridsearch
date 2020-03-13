@@ -178,7 +178,7 @@ for subst_file in substs:
                 rho, p = make_spr(first_directory, second_directory,
                                   subst_file, float(threshold),
                                   float(low_bound), float(high_bound))
-                with open(subst_file, 'a+') as f:
+                with open('{}/{}.hypersel'.format(first_directory, subst_file), 'a+') as f:
                     f.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(subst_file,
                                                               threshold,
                                                               low_bound,
