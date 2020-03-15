@@ -120,7 +120,7 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
     #      -2.66, -3.7325, -2.7350877193, -1.8825, -3.4525,
     #      -2.89, -1.5825, -3.1125])
     with open(target_words) as f:
-        targets = [line for line in f]
+        targets = [line[:-1] for line in f]
 
     dta1_vectors = list([dta1_vectors[i] for i in targets])
     dta2_vectors = list([dta2_vectors[i] for i in targets])
