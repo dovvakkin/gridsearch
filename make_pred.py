@@ -34,8 +34,8 @@ def make_word_vectors(word_dict, global_set):
     return word_list, word_vectors
 
 
-def make_spr(first_subst, second_subst, threshold, low_bound,
-             high_bound):
+def make_pred(first_subst, second_subst, threshold, low_bound,
+             high_bound, target_words):
     TOPK_THRESHOLD = threshold
 
     input_list_word = list()
@@ -147,7 +147,7 @@ parser.add_argument('--threshold', required=True,
                     help='top N substitution')
 parser.add_argument('--first-subst', required=True,
                     help='path to first substitution archive')
-parser.add_argument('--second-subst', required=True,
+parser.add_argument('t', required=True,
                     help='path to first substitution archive')
 parser.add_argument('--target-words', required=True,
                     help='path to target words file')
@@ -161,4 +161,4 @@ first_subst = args.first_subst
 second_subst = args.second_subst
 target_words = args.target_words
 
-
+make_pred(first_subst, second_subst, threshold, low_bound, high_bound, target_words)
