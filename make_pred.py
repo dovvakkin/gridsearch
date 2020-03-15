@@ -35,7 +35,7 @@ def make_word_vectors(word_dict, global_set):
 
 
 def make_pred(first_subst, second_subst, threshold, low_bound,
-             high_bound, target_words):
+             high_bound, target_words, output):
     TOPK_THRESHOLD = threshold
 
     input_list_word = list()
@@ -128,15 +128,9 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
     np_dta1 = np.asarray(dta1_vectors)
     np_dta2 = np.asarray(dta2_vectors)
 
-    # result_cosines = list()
-    for word, vec1, vec2 in zip(targets, np_dta1, np_dta2):
-        print('{}\t{}'.format(word, cosine(vec1, vec2)))
-
-    # result_cosines = np.asarray(result_cosines)
-    #
-    # rho, p = spearmanr(result_cosines, targets_scores, nan_policy='omit')
-    #
-    # return rho, p
+    with open(output, 'w') as f:
+        for word, vec1, vec2 in zip(targets, np_dta1, np_dta2):
+            f.write('{}\t{}\n'.format(word, cosine(vec1, vec2)))
 
 
 parser = argparse.ArgumentParser()
@@ -151,6 +145,7 @@ parser.add_argument('--second-subst', required=True,
                     help='path to first substitution archive')
 parser.add_argument('--target-words', required=True,
                     help='path to target words file')
+parser.add_argument('--output', required=True)
 
 args = parser.parse_args()
 
@@ -160,5 +155,6 @@ threshold = args.threshold
 first_subst = args.first_subst
 second_subst = args.second_subst
 target_words = args.target_words
+output = args.output
 
-make_pred(first_subst, second_subst, int(threshold), float(low_bound), float(high_bound), target_words)
+make_pred(first_subst, second_subst, int(threshold), float(low_bound), float(high_bound), target_words, output)
