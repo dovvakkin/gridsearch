@@ -161,4 +161,4 @@ first_subst = args.first_subst
 second_subst = args.second_subst
 target_words = args.target_words
 
-make_pred(first_subst, second_subst, threshold, low_bound, high_bound, target_words)
+make_pred(first_subst, second_subst, int(threshold), float(low_bound), float(high_bound), target_words)
