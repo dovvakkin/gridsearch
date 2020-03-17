@@ -75,6 +75,15 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
     vocab = make_vocab(global_word_dict, low_bound, high_bound)
     # END MAKE VOCAB
 
+    input_list_word = list()
+    dta_1_counter = dict()
+
+    bz2 = pd.read_csv(first_subst)
+    inp = pd.read_csv(first_subst + '.input')
+
+    for word in inp['word']:
+        input_list_word.append(word)
+
     for pods, word in zip(bz2['0'], input_list_word):
         if word not in dta_1_counter:
             dta_1_counter[word] = dict()
