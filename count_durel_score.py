@@ -110,7 +110,7 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
 
     dta_2_counter = dict()
 
-    substs = load_substs(first_subst)
+    substs = load_substs(second_subst)
 
     bz2 = substs['substs_probs']
     input_list_word = substs['word'].tolist()
