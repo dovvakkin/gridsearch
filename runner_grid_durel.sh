@@ -109,18 +109,18 @@ python3 count_durel_score.py \
  --threshold 100 300 500 \
  --model tfidf count \
  --first-subst \
-/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/\<mask\>-T-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/\<mask\>-und-T-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-oder-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-und-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>-T-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>-und-T-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-oder-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-und-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
 /home/y.kozhevnikov/Desktop/dta_1-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
 --second-subst \
-/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/\<mask\>-T-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/\<mask\>-und-T-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-oder-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
-/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint12.pt/T-und-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>-T-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>-und-T-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-oder-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
+/home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/T-und-\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
 /home/y.kozhevnikov/Desktop/dta_2-limitNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/\<mask\>-2ltr2f_topk500_fixspacesTrue.bz2 \
 --output ~/Desktop/6.csv &
 
