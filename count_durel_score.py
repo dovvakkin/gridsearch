@@ -32,7 +32,7 @@ def make_word_vectors(word_dict, global_set, df_dict=None):
 
 
 def make_pred(first_subst, second_subst, threshold, low_bound,
-             high_bound, model, target_words, output):
+             high_bound, model, output):
     TOPK_THRESHOLD = threshold
 
     # MAKE VOCAB
@@ -162,9 +162,28 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
     np_dta1 = np.asarray(dta1_vectors)
     np_dta2 = np.asarray(dta2_vectors)
 
-    with open(output, 'w') as f:
-        for word, vec1, vec2 in zip(targets, np_dta1, np_dta2):
-            f.write('{}\t{}\n'.format(word, cosine(vec1, vec2)))
+    result_cosines = list()
+    for vec1, vec2 in zip(np_dta1, np_dta2):
+        result_cosines.append(cosine(vec1, vec2))
+
+    result_cosines = np.asarray(result_cosines)
+
+    rho, p = spearmanr(result_cosines, targets_scores, nan_policy='omit')
+
+    slash_ind = first_subst.find('/')
+    if slash_ind == -1:
+        name = first_subst
+    else:
+        name = first_subst[slash_ind + 1:]
+
+    with open(output, 'a') as f:
+        f.write('{},{},{},{},{},{},{}\n'.format(name,
+                                                model,
+                                                low_bound,
+                                                high_bound,
+                                                threshold,
+                                                rho,
+                                                p))
 
 
 parser = argparse.ArgumentParser()
@@ -190,7 +209,8 @@ high_bound = args.high_bound
 threshold = args.threshold
 first_subst = args.first_subst
 second_subst = args.second_subst
+model = args.model
 # target_words = args.target_words
 output = args.output
 
-m
+make_pred(first_subst, second_subst, int(threshold), float(low_bound), float(high_bound), model, output)
