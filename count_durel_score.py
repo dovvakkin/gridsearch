@@ -188,15 +188,15 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--low-bound', required=True)
-parser.add_argument('--high-bound', required=True)
-parser.add_argument('--threshold', required=True,
+parser.add_argument('--low-bound', nargs='+',required=True)
+parser.add_argument('--high-bound', nargs='+',required=True)
+parser.add_argument('--threshold', nargs='+',required=True,
                     help='top N substitution')
-parser.add_argument('--model', required=True,
+parser.add_argument('--model', nargs='+',required=True,
                     help='model type')
-parser.add_argument('--first-subst', required=True,
+parser.add_argument('--first-subst', nargs='+',required=True,
                     help='path to first substitution archive')
-parser.add_argument('--second-subst', required=True,
+parser.add_argument('--second-subst', nargs='+',required=True,
                     help='path to first substitution archive')
 # parser.add_argument('--target-words', required=True,
 #                     help='path to target words file')
@@ -204,13 +204,25 @@ parser.add_argument('--output', required=True)
 
 args = parser.parse_args()
 
-low_bound = args.low_bound
-high_bound = args.high_bound
-threshold = args.threshold
-first_subst = args.first_subst
-second_subst = args.second_subst
-model = args.model
+low_bounds = args.low_bound
+high_bounds = args.high_bound
+thresholds = args.threshold
+first_substs = args.first_subst
+second_substs = args.second_subst
+substs = zip(first_substs, second_substs)
+models = args.model
 # target_words = args.target_words
 output = args.output
 
-make_pred(first_subst, second_subst, int(threshold), float(low_bound), float(high_bound), model, output)
+for subst in substs:
+    for low_bound in low_bounds:
+        for high_bound in high_bounds:
+            for threshold in thresholds:
+                for model in models:
+                    make_pred(subst[0],
+                              subst[1],
+                              int(threshold),
+                              float(low_bound),
+                              float(high_bound),
+                              model,
+                              output)
