@@ -13,7 +13,7 @@ def make_vocab(word_dict, low_threshold, high_threshold):
     return set(words)
 
 
-def make_word_vectors(word_dict, global_set, df, df_dict):
+def make_word_vectors(word_dict, global_set, df_dict=None):
     word_vectors = dict()
     word_list = list()
     for word in word_dict:
@@ -21,8 +21,8 @@ def make_word_vectors(word_dict, global_set, df, df_dict):
         word_vector = list()
         for word_axis in global_set:
             if word_axis in word_dict[word]:
-                if df:
-                    word_vector.append(word_dict[word][word_axis] / df[word_axis])
+                if df_dict:
+                    word_vector.append(word_dict[word][word_axis] / df_dict[word_axis])
                 else:
                     word_vector.append(word_dict[word][word_axis])
             else:
@@ -32,28 +32,22 @@ def make_word_vectors(word_dict, global_set, df, df_dict):
 
 
 def make_pred(first_subst, second_subst, threshold, low_bound,
-             high_bound, target_words, output):
+             high_bound, model, target_words, output):
     TOPK_THRESHOLD = threshold
 
-    dta_1_counter = dict()
-
     # MAKE VOCAB
-    # TODO
     dta_1_df = dict()
-    input_list_word = list()
-    bz2 = pd.read_csv(first_subst)
-    inp = pd.read_csv(first_subst + '.input')
-    for word in inp['word']:
-        input_list_word.append(word)
-    
+
     substs = load_substs(first_subst)
-    print(substs)
+
+    bz2 = substs['substs_probs']
+    input_list_word = substs['word'].tolist()
     global_word_dict = dict()
-    for pods, word in zip(bz2['0'], input_list_word):
-        pods_list = pods.strip('][').split('), ')
+
+    for pods_list, word in zip(bz2, input_list_word):
         one_word_df = set()
         for pod in pods_list:
-            num, pod_word = string_to_tuple(pod)
+            num, pod_word = pod
             if pod_word not in one_word_df:
                 one_word_df.update([pod_word])
             if pod_word not in global_word_dict:
@@ -67,17 +61,15 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
                 dta_1_df[pod_word] += 1
 
     dta_2_df = dict()
-    input_list_word = list()
-    bz2 = pd.read_csv(second_subst)
-    inp = pd.read_csv(second_subst + '.input')
-    for word in inp['word']:
-        input_list_word.append(word)
+    substs = load_substs(second_subst)
 
-    for pods, word in zip(bz2['0'], input_list_word):
-        pods_list = pods.strip('][').split('), ')
+    bz2 = substs['substs_probs']
+    input_list_word = substs['word'].tolist()
+
+    for pods_list, word in zip(bz2, input_list_word):
         one_word_df = set()
         for pod in pods_list:
-            num, pod_word = string_to_tuple(pod)
+            num, pod_word = pod
             if pod_word not in one_word_df:
                 one_word_df.update([pod_word])
             if pod_word not in global_word_dict:
@@ -92,25 +84,22 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
     vocab = make_vocab(global_word_dict, low_bound, high_bound)
     # END MAKE VOCAB
 
-    input_list_word = list()
     dta_1_counter = dict()
 
-    bz2 = pd.read_csv(first_subst)
-    inp = pd.read_csv(first_subst + '.input')
+    substs = load_substs(first_subst)
 
-    for word in inp['word']:
-        input_list_word.append(word)
+    bz2 = substs['substs_probs']
+    input_list_word = substs['word'].tolist()
 
-    for pods, word in zip(bz2['0'], input_list_word):
+    for pods_list, word in zip(bz2, input_list_word):
         if word not in dta_1_counter:
             dta_1_counter[word] = dict()
 
-        pods_list = pods.strip('][').split('), ')
         count = 0
         for pod in pods_list:
             if count >= TOPK_THRESHOLD:
                 break
-            num, pod_word = string_to_tuple(pod)
+            num, pod_word = pod
             if pod_word not in vocab:
                 continue
             count += 1
@@ -119,25 +108,22 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
             else:
                 dta_1_counter[word][pod_word] += 1
 
-    input_list_word = list()
     dta_2_counter = dict()
 
-    bz2 = pd.read_csv(second_subst)
-    inp = pd.read_csv(second_subst + '.input')
+    substs = load_substs(first_subst)
 
-    for word in inp['word']:
-        input_list_word.append(word)
+    bz2 = substs['substs_probs']
+    input_list_word = substs['word'].tolist()
 
-    for pods, word in zip(bz2['0'], input_list_word):
+    for pods_list, word in zip(bz2, input_list_word):
         if word not in dta_2_counter:
             dta_2_counter[word] = dict()
 
-        pods_list = pods.strip('][').split('), ')
         count = 0
         for pod in pods_list:
             if count >= TOPK_THRESHOLD:
                 break
-            num, pod_word = string_to_tuple(pod)
+            num, pod_word = pod
             if pod_word not in vocab:
                 continue
             count += 1
@@ -146,21 +132,29 @@ def make_pred(first_subst, second_subst, threshold, low_bound,
             else:
                 dta_2_counter[word][pod_word] += 1
 
-    dta1_words, dta1_vectors = make_word_vectors(dta_1_counter, vocab, dta_1_df)
-    dta2_words, dta2_vectors = make_word_vectors(dta_2_counter, vocab, dta_2_df)
+    if model == 'tfidf':
+        dta1_words, dta1_vectors = make_word_vectors(dta_1_counter, vocab,
+                                                     dta_1_df)
+        dta2_words, dta2_vectors = make_word_vectors(dta_2_counter, vocab,
+                                                     dta_2_df)
+    elif model == 'count':
+        dta1_words, dta1_vectors = make_word_vectors(dta_1_counter, vocab)
+        dta2_words, dta2_vectors = make_word_vectors(dta_2_counter, vocab)
+    else:
+        raise
 
-    # targets = ['Abend', 'Anstalt', 'Anstellung', 'Bilanz', 'billig',
-    #            'Donnerwetter', 'englisch', 'Feder', 'Feine', 'geharnischt',
-    #            'locker', 'Motiv', 'Museum', 'packen', 'Presse', 'Reichstag',
-    #            'technisch', 'Vorwort', 'Zufall']
-    #
-    # targets_scores = np.array(
-    #     [-3.79, -2.0725, -2.6789473684, -3.2, -2.4316666667,
-    #      -1.8375, -3.3375, -2.1403508772, -1.93, -3, -2.84,
-    #      -2.66, -3.7325, -2.7350877193, -1.8825, -3.4525,
-    #      -2.89, -1.5825, -3.1125])
-    with open(target_words) as f:
-        targets = [line[:-1] for line in f]
+    targets = ['Abend', 'Anstalt', 'Anstellung', 'Bilanz', 'billig',
+               'Donnerwetter', 'englisch', 'Feder', 'Feine', 'geharnischt',
+               'locker', 'Motiv', 'Museum', 'packen', 'Presse', 'Reichstag',
+               'technisch', 'Vorwort', 'Zufall']
+
+    targets_scores = np.array(
+        [-3.79, -2.0725, -2.6789473684, -3.2, -2.4316666667,
+         -1.8375, -3.3375, -2.1403508772, -1.93, -3, -2.84,
+         -2.66, -3.7325, -2.7350877193, -1.8825, -3.4525,
+         -2.89, -1.5825, -3.1125])
+    # with open(target_words) as f:
+    #     targets = [line[:-1] for line in f]
 
     dta1_vectors = list([dta1_vectors[i] for i in targets])
     dta2_vectors = list([dta2_vectors[i] for i in targets])
@@ -179,12 +173,14 @@ parser.add_argument('--low-bound', required=True)
 parser.add_argument('--high-bound', required=True)
 parser.add_argument('--threshold', required=True,
                     help='top N substitution')
+parser.add_argument('--model', required=True,
+                    help='model type')
 parser.add_argument('--first-subst', required=True,
                     help='path to first substitution archive')
 parser.add_argument('--second-subst', required=True,
                     help='path to first substitution archive')
-parser.add_argument('--target-words', required=True,
-                    help='path to target words file')
+# parser.add_argument('--target-words', required=True,
+#                     help='path to target words file')
 parser.add_argument('--output', required=True)
 
 args = parser.parse_args()
@@ -194,7 +190,7 @@ high_bound = args.high_bound
 threshold = args.threshold
 first_subst = args.first_subst
 second_subst = args.second_subst
-target_words = args.target_words
+# target_words = args.target_words
 output = args.output
 
 m
