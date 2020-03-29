@@ -159,6 +159,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/1.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.5 0.6 0.7 0.8 \
@@ -180,6 +181,7 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/2.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.5 0.6 0.7 0.8 \
@@ -201,6 +203,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
  --output ~/Desktop/3.csv &
+ sleep 15
 
  python3 count_durel_score.py \
 --low-bound 0.5 0.6 0.7 0.8 \
@@ -222,6 +225,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-oder-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/4.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.5 0.6 0.7 0.8 \
@@ -239,6 +243,7 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-und-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/5.csv &
+sleep 15
 
 #python3 count_durel_score.py \
 #--low-bound 0.95 0.97 \
@@ -297,6 +302,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/6.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -318,6 +324,7 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/7.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -339,6 +346,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
  --output ~/Desktop/8.csv &
+ sleep 15
 
  python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -360,6 +368,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-oder-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/9.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -377,6 +386,7 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-und-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/10.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -398,6 +408,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint36.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/11.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -419,6 +430,7 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint26.pt/T-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/12.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -440,6 +452,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-small-xlmfinetuned_checkpoint12.pt/\<mask\>\<mask\>-und-T-2ltr2f_topk150_fixspacesTrue.npz \
  --output ~/Desktop/13.csv &
+ sleep 15
 
  python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -461,6 +474,7 @@ python3 count_durel_score.py \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-oder-T-2ltr2f_topk150_fixspacesTrue.npz \
  /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/\<mask\>\<mask\>-T-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/14.csv &
+sleep 15
 
 python3 count_durel_score.py \
 --low-bound 0.95 0.97 \
@@ -478,4 +492,5 @@ python3 count_durel_score.py \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-oder-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 /home/y.kozhevnikov/Desktop/ezhik/dta_2-limitNone-maxexperwordNone/modelcheckpoints_alldata-large-xlmfinetuned_checkpoint7.pt/T-und-\<mask\>\<mask\>-2ltr2f_topk150_fixspacesTrue.npz \
 --output ~/Desktop/15.csv &
+sleep 15
 
